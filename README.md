@@ -7,10 +7,10 @@ This project aims to forecast the electric load in Slovakia using regression met
 # Files Included
 
 ## 1. Dataset
-- **`slovakia_electric_load.csv`**: This file contains the historical electric load data for Slovakia, including timestamps and corresponding load values. The dataset is essential for training and testing the forecasting model.
+- *`load slovakia.xls`**: This file contains the historical electric load data for Slovakia, including timestamps and corresponding load values. The dataset is essential for training and testing the forecasting model.
 
 ## 2. MATLAB Code
-- **`load_forecasting.m`**: This MATLAB script implements the load forecasting using regression methods. It includes data preprocessing, model training, and evaluation. The code is well-commented to help you understand each step of the process.
+- *`load_forecasting.m`**: This MATLAB script implements the load forecasting using regression methods. It includes data preprocessing, model training, and evaluation. The code is well-commented to help you understand each step of the process.
 
 # How to Use
 1. Download the repository and ensure you have MATLAB installed.
