@@ -1,10 +1,10 @@
-% prévision de charge avec la méthode de la regression linéaire multiple
-%  Réseau Slovaque 1998-2011
+% prÃ©vision de charge avec la mÃ©thode de la regression linÃ©aire multiple
+%  RÃ©seau Slovaque 1998-2011
 close all;
 clear all;
 state0 = 0;
 rand('state',state0);
-donnees = xlsread('load slovakia.xls',2,'A13:B26'); % charger les doneés des charges (GWh)
+donnees = xlsread('load slovakia.xls',2,'A13:B26'); % charger les doneÃ©s des charges (GWh)
 w=round(0.6*length(donnees));
 charge=donnees(:,2);
 charge_precedente=donnees(1:w,2);
@@ -26,11 +26,11 @@ set(figure,'Color','white')
  set(gca, 'XTickLabel', x_labels);
  y_labels = get(gca, 'YTick');
  set(gca, 'YTickLabel', y_labels);
- title('Corrélation entre la charge disérée et réalisée ','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
- xlabel(' Charge Prévue (GWh)','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
- ylabel(' Charge Réalisée (GWh)','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
- legend('Prévision','Tendance')
-%  Phase de prévision
+ title('CorrÃ©lation entre la charge disÃ©rÃ©e et rÃ©alisÃ©e ','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
+ xlabel(' Charge PrÃ©vue (GWh)','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
+ ylabel(' Charge RÃ©alisÃ©e (GWh)','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
+ legend('PrÃ©vision','Tendance')
+%  Phase de prÃ©vision
 charge_precedente=donnees(w+1:end-1,2);
 charge_actuelle=donnees(w+2:end,2);
 x=[charge_precedente];
@@ -53,7 +53,7 @@ for i=1:length(year)
         fprintf('%-08.2d %-10.5g %-7.5g\n',year(i),y(i),yprv(i))
         m(i,:)=[year(i) y(i) yprv(i)];
 end
-% Erreur moyenne absolue de prévision
+% Erreur moyenne absolue de prÃ©vision
 ct=sum(abs((de-re)./de));
    MAPE=ct.*100/length(re);
    fprintf('\n MAPE = ');fprintf('%-2.2f',MAPE); fprintf(' %% \n')
@@ -65,15 +65,15 @@ plot(datenum(year,1,1),re,'K')
 datetick('x','yyyy') 
 y_labels = get(gca, 'YTick');
 set(gca, 'YTickLabel', y_labels);
-title('Prévision de charge par la régression ','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
-xlabel('Année','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
+title('PrÃ©vision de charge par la rÃ©gression ','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
+xlabel('AnnÃ©e','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
 ylabel('Charge (GWh)','FontSize',11, 'FontName','Times New Roman','FontWeight','normal')
-legend('Disérée ','Prévue')
+legend('DisÃ©rÃ©e ','PrÃ©vue')
 legend('boxoff')
-d = {'Année' 'Actuelle(GWh)'  'Prévue(GWh)'};
-z= {'Prévision de charge par la régression'};
-xlswrite('Prévision de charge Réseau Slovaque',z,'LINEAR REGRESSION','C1')
-xlswrite('Prévision de charge Réseau Slovaque',d, 'LINEAR REGRESSION','C2')
-xlswrite('Prévision de charge Réseau Slovaque',m, 'LINEAR REGRESSION','C3') 
-xlswrite('Prévision de charge Réseau Slovaque',mape, 'LINEAR REGRESSION','K3')
-xlswrite('Prévision de charge Réseau Slovaque',MAPE, 'LINEAR REGRESSION','K4')
+d = {'AnnÃ©e' 'Actuelle(GWh)'  'PrÃ©vue(GWh)'};
+z= {'PrÃ©vision de charge par la rÃ©gression'};
+xlswrite('PrÃ©vision de charge RÃ©seau Slovaque',z,'LINEAR REGRESSION','C1')
+xlswrite('PrÃ©vision de charge RÃ©seau Slovaque',d, 'LINEAR REGRESSION','C2')
+xlswrite('PrÃ©vision de charge RÃ©seau Slovaque',m, 'LINEAR REGRESSION','C3') 
+xlswrite('PrÃ©vision de charge RÃ©seau Slovaque',mape, 'LINEAR REGRESSION','K3')
+xlswrite('PrÃ©vision de charge RÃ©seau Slovaque',MAPE, 'LINEAR REGRESSION','K4')
