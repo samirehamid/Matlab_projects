@@ -1,3 +1,4 @@
+% slovak load forecasting using regression 
 % prévision de charge avec la méthode de la regression linéaire multiple
 %  Réseau Slovaque 1998-2011
 close all;
